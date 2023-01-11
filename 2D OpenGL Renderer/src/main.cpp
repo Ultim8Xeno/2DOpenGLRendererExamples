@@ -5,7 +5,7 @@ using namespace OpenGLRenderer;
 
 int main(void)
 {
-    Window* window = new Window("Program", Vec2(768, 768), WINDOW_RESIZE_HINT | WINDOW_MAXIMIZED_HINT);
+    Window* window = new Window("Program", Vec2(768, 768));
 
     float t = 1.5f;
     const int rects = 1000;
@@ -62,7 +62,7 @@ int main(void)
                 col[i] = Vec4((rand() % 100) / 100.0f, (rand() % 100) / 100.0f, (rand() % 100) / 100.0f, (rand() % 100) / 100.0f);
                 rot[i] = rand() % 360;
             }
-            Renderer::ClearColor(Vec4((rand() % 100) / 100.0f, (rand() % 100) / 100.0f, (rand() % 100) / 100.0f, 1.0f));
+            Renderer::ClearColour(Vec4((rand() % 100) / 100.0f, (rand() % 100) / 100.0f, (rand() % 100) / 100.0f, 1.0f));
             t -= 1.5f;
         }
         

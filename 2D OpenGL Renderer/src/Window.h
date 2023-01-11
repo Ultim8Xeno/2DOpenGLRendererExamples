@@ -11,16 +11,25 @@
 
 namespace OpenGLRenderer {
 	
+	// Initialize Window to create window
 	class Window
 	{
 	public:
-		Window(const std::string& name, const Vec2& dim, uint8_t windowHints);
+		// Constructor, Takes in name of window, dimensions, and any window hints (line 8-10)
+		Window(const std::string& name, const Vec2& dim, uint8_t windowHints = 0);
+		// Destructor
 		~Window();
 
+		// Window Closing Functions
 		bool ShouldWindowClose() { return glfwWindowShouldClose(pWindow); }
+		void CloseWindow() { glfwSetWindowShouldClose(pWindow, true); }
+
+		// Get GLFW Window
 		GLFWwindow* GetWindow() { return pWindow; }
 	private:
+		// Pointer to GLFW window
 		GLFWwindow* pWindow;
+		// Dimensions of window
 		Vec2 dimensions;
 	};
 }

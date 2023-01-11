@@ -109,6 +109,8 @@ namespace OpenGLRenderer {
 		{
 			for (int i = 0; i < 2; i++)
 				data[i] = vec.data[i];
+			x = data[0];
+			y = data[1];
 			return *this;
 		}
 
@@ -138,6 +140,9 @@ namespace OpenGLRenderer {
 		{
 			for (int i = 0; i < 3; i++)
 				data[i] = vec.data[i];
+			x = data[0];
+			y = data[1];
+			z = data[2];
 			return *this;
 		}
 
@@ -169,6 +174,10 @@ namespace OpenGLRenderer {
 		{
 			for (int i = 0; i < 4; i++)
 				data[i] = vec.data[i];
+			x = data[0];
+			y = data[1];
+			z = data[2];
+			w = data[3];
 			return *this;
 		}
 

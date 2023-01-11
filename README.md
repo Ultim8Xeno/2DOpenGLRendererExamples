@@ -55,8 +55,8 @@ while (!window->ShouldWindowClose())
 
 First there's a few things you should know:
 
-- Position/dimension values is in pixels, where (0, 0) is the bottom left of the window
-- Colour value is from 0 to 1
+- Position/dimension values are in pixels, where (0, 0) is the bottom left of the window
+- Colour values are from 0 to 1
 - Rotation values are in degrees
 - Render things in order of lowest z position to highest if you're using transparent images
 
@@ -138,7 +138,7 @@ Renderer::Write(text, position, scale, colour, rotation);
 This creates a text box with the default font. You can change the font by the following:
 
 Start by downloading [hiero](https://libgdx.com/wiki/tools/hiero) and running it. Load the font file in and create a .fnt and .png file of the font.  
-Then load it in and render it:
+Then load it in with the filepath and write with it:
 
 ```cpp
 // filepath : std::string (filepath of .fnt file)
