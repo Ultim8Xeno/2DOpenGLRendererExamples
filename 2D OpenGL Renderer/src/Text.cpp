@@ -112,7 +112,7 @@ namespace OpenGLRenderer {
 
 			// Render character
 			Renderer::DrawFromSpriteSheet(letterPos, Vec2(m_CharacterData[c].dims.x * scale, m_CharacterData[c].dims.y * scale),
-				m_Texture, m_CharacterData[c].texCoords, m_CharacterData[c].dims, col);
+				m_Texture, m_CharacterData[c].texCoords, m_CharacterData[c].dims, col, rot, Vec2(pos.x - letterPos.x, pos.y - letterPos.y));
 
 			// Add to x position for next character
 			xPos += m_CharacterData[c].advance * scale;
@@ -160,8 +160,7 @@ namespace OpenGLRenderer {
 
 		// x size is the length of biggest line
 		text_size.x = std::max(text_size.x, lineLen);
-
-		//				left border				top border					right border			bottom border
+		
 		return Vec4(pos.x - text_size.x / 2, pos.y + text_size.y / 2, pos.x + text_size.x / 2, pos.y - text_size.y / 2);
 	}
 }

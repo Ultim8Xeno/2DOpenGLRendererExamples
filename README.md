@@ -58,9 +58,10 @@ First there's a few things you should know:
 - Position/dimension values are in pixels, where (0, 0) is the bottom left of the window
 - Colour values are from 0 to 1
 - Rotation values are in degrees
+- Center of rotation is relative to position
 - Render things in order of lowest z position to highest if you're using transparent images
 
-There are 3 type of objects you can render:
+There are 4 type of objects you can render:
 
 - Rectangles
 - Lines
@@ -74,7 +75,8 @@ There are 3 type of objects you can render:
 // dimensions : Vec2 (dimensions of rectangle in window)
 // colour : Vec4 (colour of rectangle)
 // rotation : float (rotation of rectangle, can be left blank with default value of 0)
-Renderer::DrawQuad(position, dimensions, colour, rotation);
+// centerOfRotation : Vec2 (center of rotation, can be left blank with default value of (0, 0))
+Renderer::DrawQuad(position, dimensions, colour, rotation, centerOfRotation);
 ```
 
 ### Lines
@@ -104,7 +106,8 @@ while (...)
     // texture : Texture* (texture object created above)
     // colour : Vec4 (colour of texture tint, can be left blank with default value of white so texture stays the same)
     // rotation : float (rotation of texture, can be left blank with default value of 0)
-    Renderer::DrawTexture(position, dimensions, texture, colour, rotation);
+    // centerOfRotation : Vec2 (center of rotation, can be left blank with default value of (0, 0))
+    Renderer::DrawTexture(position, dimensions, texture, colour, rotation, centerOfRotation);
     ...
 }
 
@@ -121,7 +124,8 @@ If you're using a spritesheet, you use this instead
 // spriteDimensions : Vec2 (dimensions of sprite in texture)
 // colour : float (colour of sprite tint, can be left blank with default value of white so sprite stays the same)
 // rot : float (rotation of sprite, can be left blank with default value of 0)
-DrawFromSpriteSheet(position, dimensions, spritesheet, spritePosition, spriteDimensions, colour, rotation);
+// centerOfRotation : Vec2 (center of rotation, can be left blank with default value of (0, 0))
+DrawFromSpriteSheet(position, dimensions, spritesheet, spritePosition, spriteDimensions, colour, rotation, centerOfRotation);
 ```
 
 ### Text
@@ -131,7 +135,7 @@ DrawFromSpriteSheet(position, dimensions, spritesheet, spritePosition, spriteDim
 // position : Vec3 (position of center of text box)
 // scale : float (scale of text box, can be left blank with a default value of 1)
 // colour : Vec4 (colour of text, can be left blank with default value of white)
-// rot : float (rotation of text, can be left blank with default value of 0) *** ROTATION NOT IMPLEMENTED YET***
+// rot : float (rotation of text, can be left blank with default value of 0)
 Renderer::Write(text, position, scale, colour, rotation);
 ```
 
@@ -151,7 +155,7 @@ while (...)
     // position : Vec3 (position of center of text box)
     // scale : float (scale of text box, can be left blank with a default value of 1)
     // colour : Vec4 (colour of text, can be left blank with default value of white)
-    // rot : float (rotation of text, can be left blank with default value of 0) *** ROTATION NOT IMPLEMENTED YET***
+    // rot : float (rotation of text, can be left blank with default value of 0)
     textObj->Write(text, position, scale, colour, rotation);
     ...
 }
