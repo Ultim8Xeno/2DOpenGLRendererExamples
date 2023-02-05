@@ -22,6 +22,13 @@ int main(void)
     Vec2 lastMousePosPress = Vec2{ -1.0f, -1.0f };
     float textRot = 0.0f;
 
+    Vec3 smileyPositions[4] = {
+            Vec3(300, 300, 1000),
+            Vec3(500, 300, 1000),
+            Vec3(300, 500, 1000),
+            Vec3(500, 500, 1000)
+    };
+
     float smileyRot = 0.0f;
 
     /* Loop until the user closes the window */
@@ -59,7 +66,7 @@ int main(void)
         {
             for (int i = 0; i < rects; i++)
             {
-                pos[i] = Vec3(rand() % 1366, rand() % 768, rand() % 1000);
+                pos[i] = Vec3(rand() % (int)window->GetWindowSize().x, rand() % (int)window->GetWindowSize().y, rand() % 1000);
                 dim[i] = Vec2(rand() % 300, rand() % 250);
                 col[i] = Vec4((rand() % 100) / 100.0f, (rand() % 100) / 100.0f, (rand() % 100) / 100.0f, (rand() % 100) / 100.0f);
                 rot[i] = rand() % 360;
@@ -76,16 +83,22 @@ int main(void)
         
         t += Renderer::GetDT();
 
-        Renderer::DrawFromSpriteSheet(Vec3(300, 300, 1000), Vec2(150, 150), tex, Vec2(0.0f, 0.0f), Vec2(tex->GetSize().x / 2, tex->GetSize().y / 2), Vec4(1.0f, 1.0f, 1.0f, 1.0f), smileyRot, Vec2(100.0f, 100.0f));
-        Renderer::DrawFromSpriteSheet(Vec3(500, 300, 1000), Vec2(150, 150), tex, Vec2(tex->GetSize().x / 2, 0.0f), Vec2(tex->GetSize().x / 2, tex->GetSize().y / 2), Vec4(0.0f, 0.0f, 1.0f, 1.0f), smileyRot, Vec2(-100.0f, 100.0f));
-        Renderer::DrawFromSpriteSheet(Vec3(300, 500, 1000), Vec2(150, 150), tex, Vec2(0.0f, tex->GetSize().y / 2), Vec2(tex->GetSize().x / 2, tex->GetSize().y / 2), Vec4(0.0f, 1.0f, 0.0f, 1.0f), smileyRot, Vec2(100.0f, -100.0f));
-        Renderer::DrawFromSpriteSheet(Vec3(500, 500, 1000), Vec2(150, 150), tex, Vec2(tex->GetSize().x / 2, tex->GetSize().y / 2), Vec2(tex->GetSize().x / 2, tex->GetSize().y / 2), Vec4(1.0f, 0.0f, 0.0f, 1.0f), smileyRot, Vec2(-100.0f, -100.0f));
+        const int signs[8] = { -1, -1, 1, -1, -1, 1, 1, 1 };
+
+        for (int i = 0; i < 4; i++)
+        {
+            smileyPositions[i].RotateAroundCenter(Renderer::GetDT() * 60.0f, Vec2(400, 400));
+            Renderer::DrawFromSpriteSheet(smileyPositions[i], Vec2(150, 150), tex,
+                Vec2(tex->GetSize().x / 2 * ((signs[i * 2] + 1) / 2), tex->GetSize().y / 2 * ((signs[i * 2 + 1] + 1) / 2)),
+                Vec2(tex->GetSize().x / 2, tex->GetSize().y / 2), Vec4(1.0f, 1.0f, 1.0f, 1.0f), smileyRot);
+        }
 
         smileyRot += Renderer::GetDT() * 60.0f;
 
         Renderer::Write("Super idol de xiao rong\nDou mei ni de tian\nBa yue zheng wu de yang guang\nDou mei ni yao yan\n\
 Re ai yi bai ling wu du de ni\nDi di qing chun de zheng liu shui", Vec3(300, 500, 2000), 0.25f,
                         Vec4(rand() % 100 / 100.0f, rand() % 100 / 100.0f, rand() % 100 / 100.0f, 1.0f), textRot);
+
         textRot += Renderer::GetDT() * 30.0f;
 
         Renderer::Write("FPS: " + std::to_string(1/Renderer::GetDT()), Vec3(1000, 600, 5000), 0.25f);

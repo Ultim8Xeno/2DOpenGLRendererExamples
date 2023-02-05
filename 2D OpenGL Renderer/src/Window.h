@@ -26,6 +26,8 @@ namespace OpenGLRenderer {
 
 		// Get GLFW Window
 		GLFWwindow* GetWindow() { return pWindow; }
+		// Get Window Dimensions
+		Vec2 GetWindowSize() { return dimensions; }
 	private:
 		// Pointer to GLFW window
 		GLFWwindow* pWindow;

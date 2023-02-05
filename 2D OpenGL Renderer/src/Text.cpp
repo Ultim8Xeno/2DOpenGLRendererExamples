@@ -111,8 +111,9 @@ namespace OpenGLRenderer {
 			);
 
 			// Render character
+			letterPos.RotateAroundCenter(rot, Vec2(pos.x, pos.y));
 			Renderer::DrawFromSpriteSheet(letterPos, Vec2(m_CharacterData[c].dims.x * scale, m_CharacterData[c].dims.y * scale),
-				m_Texture, m_CharacterData[c].texCoords, m_CharacterData[c].dims, col, rot, Vec2(pos.x - letterPos.x, pos.y - letterPos.y));
+				m_Texture, m_CharacterData[c].texCoords, m_CharacterData[c].dims, col, rot);
 
 			// Add to x position for next character
 			xPos += m_CharacterData[c].advance * scale;

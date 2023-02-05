@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 
 namespace OpenGLRenderer {
 
@@ -113,6 +114,13 @@ namespace OpenGLRenderer {
 			y = data[1];
 			return *this;
 		}
+		void RotateAroundCenter(float rotation, const Vec2T<T>& centerOfRotation)
+		{
+			float angle = std::atan2(-centerOfRotation.y, -centerOfRotation.x);
+			double distFromCent = sqrt(centerOfRotation.x * centerOfRotation.x + centerOfRotation.y * centerOfRotation.y);
+			data[0] += centerOfRotation.x + distFromCent * std::cos(angle + rotation * 0.0174532925);
+			data[1] += centerOfRotation.y + distFromCent * std::sin(angle + rotation * 0.0174532925);
+		}
 
 		using VectorHelper<T, 2>::VectorHelper;
 		using VectorHelper<T, 2>::operator*;
@@ -144,6 +152,16 @@ namespace OpenGLRenderer {
 			y = data[1];
 			z = data[2];
 			return *this;
+		}
+
+		void RotateAroundCenter(float rotation, const Vec2T<T>& centerOfRotation)
+		{
+			centerOfRotation.x -= data[0];
+			centerOfRotation.y -= data[1];
+			float angle = std::atan2(-centerOfRotation.y, -centerOfRotation.x);
+			double distFromCent = sqrt(centerOfRotation.x * centerOfRotation.x + centerOfRotation.y * centerOfRotation.y);
+			data[0] += centerOfRotation.x + distFromCent * std::cos(angle + rotation * 0.0174532925);
+			data[1] += centerOfRotation.y + distFromCent * std::sin(angle + rotation * 0.0174532925);
 		}
 
 		using VectorHelper<T, 3>::VectorHelper;

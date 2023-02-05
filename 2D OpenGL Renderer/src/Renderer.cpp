@@ -211,27 +211,27 @@ namespace OpenGLRenderer {
 		Input::Update();
 	}
 
-	void Renderer::DrawQuad(const Vec3& pos, const Vec2& dim, const Vec4& col, float rot, const Vec2& centerOfRot)
+	void Renderer::DrawQuad(const Vec3& pos, const Vec2& dim, const Vec4& col, float rot)
 	{
 		// Draw a texture with data.whiteTex
-		DrawTexture(pos, dim, data.whiteTex, col, rot, centerOfRot);
+		DrawTexture(pos, dim, data.whiteTex, col, rot);
 	}
 
-	void Renderer::DrawTexture(const Vec3& pos, const Vec2& dim, Texture* tex, const Vec4& col, float rot, const Vec2& centerOfRot)
+	void Renderer::DrawTexture(const Vec3& pos, const Vec2& dim, Texture* tex, const Vec4& col, float rot)
 	{
 		// Draw texture as spritesheet with one sprite
-		DrawFromSpriteSheet(pos, dim, tex, Vec2(0.0f, 0.0f), Vec2(tex->GetSize().x, tex->GetSize().y), col, rot, centerOfRot);
+		DrawFromSpriteSheet(pos, dim, tex, Vec2(0.0f, 0.0f), Vec2(tex->GetSize().x, tex->GetSize().y), col, rot);
 	}
 
 	void Renderer::DrawFromSpriteSheet(const Vec3& pos, const Vec2& dim, Texture* tex, const Vec2& startingTexPos,
-		const Vec2& spriteSize, const Vec4& col, float rot, const Vec2& centerOfRot)
+		const Vec2& spriteSize, const Vec4& col, float rot)
 	{
 		// Draw from sprite sheet with texture id
-		DrawFromSpriteSheet(pos, dim, tex->GetID(), tex->GetSize(), startingTexPos, spriteSize, col, rot, centerOfRot);
+		DrawFromSpriteSheet(pos, dim, tex->GetID(), tex->GetSize(), startingTexPos, spriteSize, col, rot);
 	}
 
 	void Renderer::DrawFromSpriteSheet(const Vec3& pos, const Vec2& dim, uint32_t tex, const Vec2& texSize,
-		const Vec2& startingTexPos, const Vec2& spriteSize, const Vec4& col, float rot, const Vec2& centerOfRot)
+		const Vec2& startingTexPos, const Vec2& spriteSize, const Vec4& col, float rot)
 	{
 		// Tries to find texture id in already rendered textures, if found set texID to index
 		int texID = 0;
@@ -254,14 +254,6 @@ namespace OpenGLRenderer {
 		double r = 0.0;
 		if (rot)
 			r = sqrt(dim.x * dim.x + dim.y * dim.y) / 2;
-
-		// Set position based on center of rotation
-		{
-			float angle = std::atan2(-centerOfRot.y, -centerOfRot.x);
-			double distFromCent = sqrt(centerOfRot.x * centerOfRot.x + centerOfRot.y * centerOfRot.y);
-			pos.x = pos.x + centerOfRot.x + distFromCent * std::cos(angle + rot * 0.0174532925);
-			pos.y = pos.y + centerOfRot.y + distFromCent * std::sin(angle + rot * 0.0174532925);
-		}
 
 		for (int i = 0; i < 4; i++)
 		{
