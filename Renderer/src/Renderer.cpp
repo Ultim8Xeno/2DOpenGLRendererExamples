@@ -225,6 +225,12 @@ namespace OpenGLRenderer {
 		DrawFromSpriteSheet(pos, dim, tex, Vec2(0.0f, 0.0f), Vec2(tex->GetSize().x, tex->GetSize().y), col, rot);
 	}
 
+	void Renderer::DrawTexture(const Vec3& pos, const Vec2& dim, uint32_t texId, const Vec2& textureSize, const Vec4& col, float rot)
+	{
+		// Draw texture as spritesheet with one sprite
+		DrawFromSpriteSheet(pos, dim, texId, textureSize, Vec2(0.0f, 0.0f), textureSize, col, rot);
+	}
+
 	void Renderer::DrawFromSpriteSheet(const Vec3& pos, const Vec2& dim, Texture* tex, const Vec2& startingTexPos,
 		const Vec2& spriteSize, const Vec4& col, float rot)
 	{

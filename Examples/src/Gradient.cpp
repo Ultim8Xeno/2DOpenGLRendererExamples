@@ -4,7 +4,7 @@ using namespace OpenGLRenderer;
 
 int main(void)
 {
-	const float accuracy = 40.0f;
+	const float accuracy = 30.0f;
 
 	Window* window = new Window("Gradient", Vec2(690, 690));
 

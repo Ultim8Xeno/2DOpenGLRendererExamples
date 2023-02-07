@@ -3,6 +3,7 @@
 #include "Vector.h"
 #include "Debug.h"
 #include "Texture.h"
+#include "FrameBuffer.h"
 
 namespace OpenGLRenderer {
 
@@ -27,6 +28,8 @@ namespace OpenGLRenderer {
 		static void DrawQuad(const Vec3& pos, const Vec2& dim, const Vec4& col, float rot = 0.0f);
 		static void DrawTexture(const Vec3& pos, const Vec2& dim, Texture* tex, const Vec4& col = Vec4(1.0f, 1.0f, 1.0f, 1.0f),
 			float rot = 0.0f);
+		static void DrawTexture(const Vec3& pos, const Vec2& dim, uint32_t texId, const Vec2& textureSize, const Vec4& col = Vec4(1.0f, 1.0f, 1.0f, 1.0f),
+			float rot = 0.0f);
 		static void DrawFromSpriteSheet(const Vec3& pos, const Vec2& dim, Texture* tex, const Vec2& startingTexPos,
 			const Vec2& spriteSize, const Vec4& col = Vec4(1.0f, 1.0f, 1.0f, 1.0f), float rot = 0.0f);
 		static void DrawFromSpriteSheet(const Vec3& pos, const Vec2& dim, uint32_t texId, const Vec2& textureSize,
@@ -42,7 +45,7 @@ namespace OpenGLRenderer {
 
 		// Get time since last frame (delta time)
 		static float GetDT();
-	private:
+
 		// Actually Renders everything
 		static void Flush();
 	};

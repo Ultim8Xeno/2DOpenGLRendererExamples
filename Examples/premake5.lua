@@ -9,8 +9,7 @@ project "Examples"
 
     files
     {
-        "src/**.h",
-        "src/**.cpp"
+        "src/Framebuffer.cpp"
     }
 
     includedirs
