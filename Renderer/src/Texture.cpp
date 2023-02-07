@@ -1,5 +1,7 @@
 #include "Texture.h"
 #include "Debug.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include "Vendor/stb_image.h"
 

@@ -1,10 +1,7 @@
 #pragma once
-#include "Vector.h"
 #include "Window.h"
+#include "Vector.h"
 #include "Debug.h"
-#include "Input.h"
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include "Texture.h"
 
 namespace OpenGLRenderer {

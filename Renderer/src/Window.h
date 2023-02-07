@@ -1,6 +1,4 @@
 #pragma once
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include "Vector.h"
 #include <string>
 
@@ -8,6 +6,8 @@
 #define WINDOW_MAXIMIZED_HINT 1
 #define WINDOW_RESIZE_HINT 2
 #define WINDOW_SCALE_TO_MONITOR_HINT 4
+
+struct GLFWwindow;
 
 namespace OpenGLRenderer {
 	
@@ -21,8 +21,8 @@ namespace OpenGLRenderer {
 		~Window();
 
 		// Window Closing Functions
-		bool ShouldWindowClose() { return glfwWindowShouldClose(pWindow); }
-		void CloseWindow() { glfwSetWindowShouldClose(pWindow, true); }
+		bool ShouldWindowClose() const;
+		void CloseWindow();
 
 		// Get GLFW Window
 		GLFWwindow* GetWindow() { return pWindow; }

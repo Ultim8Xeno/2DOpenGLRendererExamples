@@ -1,4 +1,5 @@
 bin/
 bin-int/
 .vs/
-2DOpenGLRenderer/src/main.cpp
+OpenGLRenderer.sln
+/**/*.vcxproj

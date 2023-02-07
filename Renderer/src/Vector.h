@@ -206,7 +206,7 @@ namespace OpenGLRenderer {
 		using VectorHelper<T, 4>::operator-;
 		using VectorHelper<T, 4>::operator=;
 		using VectorHelper<T, 4>::data;
-		
+
 		T& x = data[0];
 		T& y = data[1];
 		T& z = data[2];

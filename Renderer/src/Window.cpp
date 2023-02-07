@@ -57,4 +57,14 @@ namespace OpenGLRenderer {
 		glfwDestroyWindow(pWindow);
 		glfwTerminate();
 	}
+
+	bool Window::ShouldWindowClose() const
+	{
+		return glfwWindowShouldClose(pWindow);
+	}
+
+	void Window::CloseWindow()
+	{
+		glfwSetWindowShouldClose(pWindow, true);
+	}
 }

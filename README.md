@@ -8,6 +8,15 @@ This renderer written in C++ has capabilities to render quads, lines, textures, 
 git clone https://github.com/Ultim8Xeno/2DOpenGLRenderer
 ```
 
+# Building
+
+First, download premake5 at https://premake.github.io/download/. You can add it to your search path or put it in the directory of your project. Once installed, go to command line and type in premake5 followed by the project files you want to generate. Examples include vs2019, gmake, codelite, etc. The full list can be found here: https://premake.github.io/docs/Using-Premake \
+To generate visual studio 2019 project files, you would type in
+
+```bash
+premake5 vs2019
+```
+
 # Usage
 
 Start by including the correct file
@@ -58,7 +67,6 @@ First there's a few things you should know:
 - Position/dimension values are in pixels, where (0, 0) is the bottom left of the window
 - Colour values are from 0 to 1
 - Rotation values are in degrees
-- Center of rotation is relative to position
 - Render things in order of lowest z position to highest if you're using transparent images
 
 There are 4 type of objects you can render:
@@ -75,8 +83,7 @@ There are 4 type of objects you can render:
 // dimensions : Vec2 (dimensions of rectangle in window)
 // colour : Vec4 (colour of rectangle)
 // rotation : float (rotation of rectangle, can be left blank with default value of 0)
-// centerOfRotation : Vec2 (center of rotation, can be left blank with default value of (0, 0))
-Renderer::DrawQuad(position, dimensions, colour, rotation, centerOfRotation);
+Renderer::DrawQuad(position, dimensions, colour, rotation);
 ```
 
 ### Lines
@@ -106,8 +113,7 @@ while (...)
     // texture : Texture* (texture object created above)
     // colour : Vec4 (colour of texture tint, can be left blank with default value of white so texture stays the same)
     // rotation : float (rotation of texture, can be left blank with default value of 0)
-    // centerOfRotation : Vec2 (center of rotation, can be left blank with default value of (0, 0))
-    Renderer::DrawTexture(position, dimensions, texture, colour, rotation, centerOfRotation);
+    Renderer::DrawTexture(position, dimensions, texture, colour, rotation);
     ...
 }
 
@@ -123,9 +129,8 @@ If you're using a spritesheet, you use this instead
 // spritePosition : Vec2 (position of bottom left pixel of sprite in texture)
 // spriteDimensions : Vec2 (dimensions of sprite in texture)
 // colour : float (colour of sprite tint, can be left blank with default value of white so sprite stays the same)
-// rot : float (rotation of sprite, can be left blank with default value of 0)
-// centerOfRotation : Vec2 (center of rotation, can be left blank with default value of (0, 0))
-DrawFromSpriteSheet(position, dimensions, spritesheet, spritePosition, spriteDimensions, colour, rotation, centerOfRotation);
+// rotation : float (rotation of sprite, can be left blank with default value of 0)
+DrawFromSpriteSheet(position, dimensions, spritesheet, spritePosition, spriteDimensions, colour, rotation);
 ```
 
 ### Text
@@ -135,7 +140,7 @@ DrawFromSpriteSheet(position, dimensions, spritesheet, spritePosition, spriteDim
 // position : Vec3 (position of center of text box)
 // scale : float (scale of text box, can be left blank with a default value of 1)
 // colour : Vec4 (colour of text, can be left blank with default value of white)
-// rot : float (rotation of text, can be left blank with default value of 0)
+// rotation : float (rotation of text, can be left blank with default value of 0)
 Renderer::Write(text, position, scale, colour, rotation);
 ```
 
@@ -155,7 +160,7 @@ while (...)
     // position : Vec3 (position of center of text box)
     // scale : float (scale of text box, can be left blank with a default value of 1)
     // colour : Vec4 (colour of text, can be left blank with default value of white)
-    // rot : float (rotation of text, can be left blank with default value of 0)
+    // rotation : float (rotation of text, can be left blank with default value of 0)
     textObj->Write(text, position, scale, colour, rotation);
     ...
 }

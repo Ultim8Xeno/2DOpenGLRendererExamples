@@ -1,4 +1,6 @@
 #include "Renderer.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "Buffers.h"
 #include "VertexArray.h"
 #include "Shader.h"
@@ -71,7 +73,7 @@ namespace OpenGLRenderer {
 		data.indexData = new uint32_t[data.MAX_INDICES];
 
 		// Create Shader
-		data.shader = new Shader("src/Res/Shaders/vertex.shader", "src/Res/Shaders/fragment.shader");
+		data.shader = new Shader("Res/Shaders/vertex.shader", "Res/Shaders/fragment.shader");
 		
 		// Create Vertex Array
 		data.va = new VertexArray();
@@ -120,7 +122,7 @@ namespace OpenGLRenderer {
 		data.whiteTex = new Texture(&whiteTexData, 1, 1);
 
 		// Create text object with default font
-		data.textObj = new TextObj("src/Res/Fonts/RobotoCondensed-Regular.fnt");
+		data.textObj = new TextObj("Res/Fonts/RobotoCondensed-Regular.fnt");
 		
 		// Set background colour to light gray
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
