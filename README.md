@@ -17,6 +17,20 @@ To generate visual studio 2019 project files, you would type in
 premake5 vs2019
 ```
 
+# Using Your Own Project
+
+Open premake5.lua in the main directory\
+On the line where application is defined, change it to be the name of your application project
+e.g:
+
+```lua
+application = "AmongUsGame"
+```
+
+Then create your own premake5.lua file in a folder titled whatever you put in the application variable. This folder should also contain all your code and whatnot. Write a premake5 file either using this documentation https://premake.github.io/docs/ or copy and pasting the premake5.lua file in Examples.
+
+You can now build the project (above section)
+
 # Usage
 
 Start by including the correct file

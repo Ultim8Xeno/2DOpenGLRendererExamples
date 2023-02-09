@@ -18,8 +18,8 @@ namespace OpenGLRenderer {
 		// Write, takes in text, position, scale, tint, rotation
 		void Write(const std::string& text, const Vec3& pos, float scale = 1.0f, const Vec4& col = Vec4(1.0f, 1.0f, 1.0f, 1.0f), float rot = 0.0f);
 
-		// Get Dimensions for text box ; top left => (x, y), bottom right => (z, w)
-		Vec4 GetTextBoxDimensions(const std::string& text, const Vec2& pos, float scale = 1.0f, float rot = 0.0f);
+		// Get Dimensions for text box ; (width, height) => (x, y)
+		Vec2 GetTextBoxDimensions(const std::string& text, float scale);
 	private:
 		// Character data
 		struct Character
@@ -39,5 +39,6 @@ namespace OpenGLRenderer {
 		std::unordered_map<char, Character> m_CharacterData;
 		// Texture of characters
 		Texture* m_Texture = nullptr;
+		uint32_t m_MaxHeight = 0;
 	};
 }

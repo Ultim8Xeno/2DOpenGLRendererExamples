@@ -2,7 +2,7 @@
 
 using namespace OpenGLRenderer;
 
-int main(void)
+int TextureExample(void)
 {
 	const float accuracy = 100.0f;
 
@@ -28,6 +28,9 @@ int main(void)
 
 		Renderer::EndDraw();
 	}
+
+	delete window;
+	delete texture;
 
 	return 0;
 }

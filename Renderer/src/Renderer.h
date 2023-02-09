@@ -4,6 +4,7 @@
 #include "Debug.h"
 #include "Texture.h"
 #include "FrameBuffer.h"
+#include "Text.h"
 
 namespace OpenGLRenderer {
 

@@ -9,12 +9,14 @@ project "Examples"
 
     files
     {
-        "src/Framebuffer.cpp"
+        "src/**.h",
+        "src/**.cpp"
     }
 
     includedirs
     {
-        "%{wks.location}/Renderer/src"
+        "%{wks.location}/Renderer/src",
+        "src"
     }
 
     links

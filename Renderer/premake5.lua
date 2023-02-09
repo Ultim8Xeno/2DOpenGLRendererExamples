@@ -27,25 +27,30 @@ project "Renderer"
         "dependencies/glad-4.5/include",
         "dependencies/glfw-3.3.8.bin.WIN64/include"
     }
-    
-    libdirs
-    {
-        "dependencies/glfw-3.3.8.bin.WIN64/lib-vc2019"
-    }
 
     links
     {
-        "opengl32.lib",
-        "glfw3.lib"
+        "opengl32.lib"
     }
 
+    filter "system:linux"
+    
     filter "system:windows"
 		systemversion "latest"
         
         postbuildcommands
         {
-            ("Xcopy /E /I /y Res \"%{wks.location}bin\\" .. outputdir .. "\\" .. application ..  "\\Res\""),
             ("Xcopy /E /I /y Res \"%{wks.location}" .. application .. "\\Res\"")
+        }
+
+        links
+        {
+            "glfw3.lib"
+        }
+        
+        libdirs
+        {
+            "dependencies/glfw-3.3.8.bin.WIN64/lib-vc2019"
         }
 
     filter "configurations:Debug"

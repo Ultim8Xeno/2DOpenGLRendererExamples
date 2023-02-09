@@ -5,6 +5,7 @@
 #include "Debug.h"
 #include "Renderer.h"
 #include <glad/glad.h>
+#include <cmath>
 
 namespace OpenGLRenderer {
 
@@ -58,6 +59,9 @@ namespace OpenGLRenderer {
 				atoi(GetStr(s, "yoffset=", ' ').c_str())
 			);
 			m_CharacterData[id].advance = atoi(GetStr(s, "xadvance=", ' ').c_str());
+
+			// Get max height
+			m_MaxHeight = std::max(m_CharacterData[id].dims.y, (float)m_MaxHeight);
 		}
 		
 		// Get the amount of kernings
@@ -84,8 +88,8 @@ namespace OpenGLRenderer {
 	void TextObj::Write(const std::string& text, const Vec3& pos, float scale, const Vec4& col, float rot)
 	{
 		// Get dimensions of box and top left
-		Vec4 dimensions = GetTextBoxDimensions(text, Vec2(pos.x, pos.y), scale, rot);
-		Vec2 topLeft = Vec2(dimensions.x, dimensions.y);
+		Vec2 dimensions = GetTextBoxDimensions(text, scale);
+		Vec2 topLeft = Vec2(pos.x - dimensions.x / 2, pos.y + dimensions.y / 2);
 
 		// top left of each character
 		float xPos = topLeft.x;
@@ -98,7 +102,7 @@ namespace OpenGLRenderer {
 			// If new line, adjust y position to next line and x position to beginning of line
 			if (c == '\n')
 			{
-				yPos -= m_CharacterData['|'].dims.y * scale;
+				yPos -= m_MaxHeight * scale;
 				xPos = topLeft.x;
 				continue;
 			}
@@ -127,10 +131,10 @@ namespace OpenGLRenderer {
 		}
 	}
 
-	Vec4 TextObj::GetTextBoxDimensions(const std::string& text, const Vec2& pos, float scale, float rot)
+	Vec2 TextObj::GetTextBoxDimensions(const std::string& text, float scale)
 	{
 		// Set default text size to (0, size of one line)
-		Vec2 text_size = Vec2(0.0f, m_CharacterData['|'].dims.y * scale);
+		Vec2 text_size = Vec2(0.0f, m_MaxHeight * scale);
 		// Stores current line length
 		float lineLen = 0.0f;
 		for (int i = 0; i < text.length(); i++)
@@ -144,7 +148,7 @@ namespace OpenGLRenderer {
 					lineLen -= m_CharacterData[text[i - 1]].advance * scale;
 					lineLen += m_CharacterData[text[i - 1]].dims.x * scale;
 				}
-				text_size.y += m_CharacterData['|'].dims.y * scale;
+				text_size.y += m_MaxHeight * scale;
 
 				// x size is the length of biggest line
 				text_size.x = std::max(text_size.x, lineLen);
@@ -162,6 +166,6 @@ namespace OpenGLRenderer {
 		// x size is the length of biggest line
 		text_size.x = std::max(text_size.x, lineLen);
 		
-		return Vec4(pos.x - text_size.x / 2, pos.y + text_size.y / 2, pos.x + text_size.x / 2, pos.y - text_size.y / 2);
+		return Vec2(text_size.x, text_size.y);
 	}
 }

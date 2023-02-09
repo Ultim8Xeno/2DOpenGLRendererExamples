@@ -2,7 +2,7 @@
 
 using namespace OpenGLRenderer;
 
-int main(void)
+int GradientExample(void)
 {
 	const float accuracy = 30.0f;
 
@@ -23,6 +23,8 @@ int main(void)
 
 		Renderer::EndDraw();
 	}
+
+	delete window;
 
 	return 0;
 }

@@ -2,7 +2,7 @@
 
 using namespace OpenGLRenderer;
 
-int main(void)
+int FramebufferExample(void)
 {
 	const float accuracy = 30.0f;
 
@@ -36,6 +36,9 @@ int main(void)
 
 		Renderer::EndDraw();
 	}
+
+	delete window;
+	delete framebuffer;
 
 	return 0;
 }
