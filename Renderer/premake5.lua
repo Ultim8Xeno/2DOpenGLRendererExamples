@@ -34,9 +34,12 @@ project "Renderer"
     }
 
     filter "system:linux"
-    
+    defines "PLATFORM_LINUX"
+
     filter "system:windows"
 		systemversion "latest"
+
+        defines "PLATFORM_WINDOWS"
         
         postbuildcommands
         {

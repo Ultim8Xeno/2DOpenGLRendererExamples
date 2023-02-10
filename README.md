@@ -194,13 +194,13 @@ Renderer::ClearColor(colour);
 
 ## Input
 
+Enums defined in Renderer/src/InputKeys.h
+
 ### Keyboard Input
 
-[Reference to keyboard enums](https://www.glfw.org/docs/3.3/group__keys.html)
-
 ```cpp
-// key : uint32_t (GLFW_KEY_...)
-// action : uint8_t (GLFW_PRESS, GLFW_RELEASE or, GLFW_REPEAT)
+// key : uint32_t (INPUT_KEY_...)
+// action : uint8_t (INPUT_PRESS, INPUT_RELEASE, or INPUT_REPEAT)
 if (Input::GetKeyState(key) == action)
 {
     ...
@@ -209,11 +209,9 @@ if (Input::GetKeyState(key) == action)
 
 ### Mouse Input
 
-[Reference to mouse enums](https://www.glfw.org/docs/3.3/group__buttons.html)
-
 ```cpp
-// button : uint32_t (GLFW_MOUSE_BUTTON_...)
-// action : uint8_t (GLFW_PRESS, GLFW_RELEASE or, GLFW_REPEAT)
+// button : uint32_t (INPUT_MOUSE_BUTTON_...)
+// action : uint8_t (INPUT_PRESS, INPUT_RELEASE, or INPUT_REPEAT)
 if (Input::GetMouseButtonState(button) == action)
 {
     ...

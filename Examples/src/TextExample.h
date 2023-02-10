@@ -1,10 +1,11 @@
+#pragma once
 #include "Renderer.h"
 
 using namespace OpenGLRenderer;
 
 int TextExample(void)
 {
-	Window* window = new Window("Text", Vec2(690, 690));
+	Window* window = new Window("Text", Vec2(690, 690), WINDOW_MAXIMIZED_HINT);
 
 	TextObj* text = new TextObj("Res/Fonts/Inconsolata-Regular.fnt");
 

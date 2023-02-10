@@ -1,6 +1,13 @@
 #pragma once
 #ifdef DEBUG
-#define ASSERT(x) if (!(x)) {__debugbreak();}	// Works in visual studio only
+	#ifdef PLATFORM_WINDOWS
+		#define DEBUGBREAK() __debugbreak()
+	#elif defined PLATFORM_LINUX
+		#define DEBUGBREAK() raise(SIGTRAP)
+	#else
+		#define DEBUGBREAK() 
+	#endif
+	#define ASSERT(x) if (!(x)) { DEBUGBREAK(); }
 #else
-#define ASSERT(x) x
+	#define ASSERT(x)
 #endif // DEBUG

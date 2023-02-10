@@ -1,8 +1,9 @@
 #pragma once
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "InputKeys.h"
 #include <unordered_map>
 #include "Vector.h"
+
+struct GLFWwindow;
 
 namespace OpenGLRenderer {
 

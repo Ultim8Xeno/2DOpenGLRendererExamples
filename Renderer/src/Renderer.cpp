@@ -270,8 +270,8 @@ namespace OpenGLRenderer {
 			{
 				// If rotation, set them using some trigonometry I'm too lazy to explain
 				float angle = std::atan2(dim.y / 2 * signs[2 * i + 1], dim.x / 2 * signs[2 * i]);
-				data.vertexData[data.currentQuad * 4 + i].pos[0] = pos.x + r * std::cos(angle + rot * 0.0174532925);
-				data.vertexData[data.currentQuad * 4 + i].pos[1] = pos.y + r * std::sin(angle + rot * 0.0174532925);
+				data.vertexData[data.currentQuad * 4 + i].pos[0] = pos.x + r * std::cos(angle - rot * 0.0174532925);
+				data.vertexData[data.currentQuad * 4 + i].pos[1] = pos.y + r * std::sin(angle - rot * 0.0174532925);
 			}
 			else
 			{
@@ -310,7 +310,7 @@ namespace OpenGLRenderer {
 		// Dimensions is (width, length between start and end)
 		Vec2 dim = { width, std::sqrt((end.x - start.x) * (end.x - start.x) + (end.y - start.y) * (end.y - start.y)) };
 		// Get rotation in rad, convert to deg, subtract 90 because reasons
-		float rot = std::atan2(end.y - start.y, end.x - start.x) * 57.2957795f - 90.0f;
+		float rot = std::atan2(end.y - start.y, end.x - start.x) * -57.2957795f + 90.0f;
 
 		// Just draw it as a quad
 		DrawQuad(center, dim, col, rot);

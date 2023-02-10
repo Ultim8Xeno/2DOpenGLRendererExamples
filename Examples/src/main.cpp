@@ -2,6 +2,7 @@
 #include "GradientExample.h"
 #include "TextExample.h"
 #include "TextureExample.h"
+#include "InputExample.h"
 
 int main(void)
 {
@@ -9,6 +10,7 @@ int main(void)
 	TextureExample();
 	TextExample();
 	FramebufferExample();
+	InputExample();
 
 	return 0;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.h"
 #include "Vector.h"
+#include "Input.h"
 #include "Debug.h"
 #include "Texture.h"
 #include "FrameBuffer.h"

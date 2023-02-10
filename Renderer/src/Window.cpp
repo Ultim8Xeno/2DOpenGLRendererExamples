@@ -3,6 +3,8 @@
 #include "Input.h"
 #include <iostream>
 #include "Renderer.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 namespace OpenGLRenderer {
 
@@ -13,7 +15,6 @@ namespace OpenGLRenderer {
 		ASSERT(glfwInit());
 
 		// TEMPORARY (hopefully)
-		windowHints |= WINDOW_MAXIMIZED_HINT;
 		windowHints &= UINT8_MAX ^ WINDOW_RESIZE_HINT;
 
 		// Set window hints
