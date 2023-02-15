@@ -2,6 +2,7 @@
 #include "InputKeys.h"
 #include <unordered_map>
 #include "Vector.h"
+#include <stdint.h>
 
 struct GLFWwindow;
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Vector.h"
+#include <stdint.h>
 
 namespace OpenGLRenderer
 {

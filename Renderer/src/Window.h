@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector.h"
 #include <string>
+#include <stdint.h>
 
 // WINDOW_HINTS
 #define WINDOW_MAXIMIZED_HINT 1

@@ -34,7 +34,16 @@ project "Renderer"
     }
 
     filter "system:linux"
-    defines "PLATFORM_LINUX"
+
+        defines "PLATFORM_LINUX"
+        linkoptions
+        {
+            "-lglfw"
+        }
+        postbuildcommands
+        {
+            ("cp -R -l Res \"%{wks.location}" .. application .. "/Res\"")
+        }
 
     filter "system:windows"
 		systemversion "latest"

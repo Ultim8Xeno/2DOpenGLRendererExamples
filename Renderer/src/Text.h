@@ -3,6 +3,7 @@
 #include "Vector.h"
 #include <unordered_map>
 #include "Texture.h"
+#include <stdint.h>
 
 namespace OpenGLRenderer {
 

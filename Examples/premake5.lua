@@ -24,6 +24,12 @@ project "Examples"
         "Renderer"
     }
 
+    filter "system:linux"
+        postbuildcommands
+        {
+            ("cp -R -l Res \"%{wks.location}bin/" .. outputdir .. "/%{prj.name}/Res\"")
+        }
+
     filter "system:windows"
 		systemversion "latest"
 

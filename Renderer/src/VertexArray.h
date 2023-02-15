@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <glad/glad.h>
+#include <stdint.h>
 
 namespace OpenGLRenderer {
 

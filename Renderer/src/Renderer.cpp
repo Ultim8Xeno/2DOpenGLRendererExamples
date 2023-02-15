@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include <cmath>
+#include <cstring>
 #include <iostream>
 #include "Debug.h"
 #include "Input.h"
