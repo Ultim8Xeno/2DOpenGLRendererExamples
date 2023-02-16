@@ -1,6 +1,6 @@
 # About
 
-This renderer written in C++ has capabilities to render quads, lines, textures, and text (coloured or rotated).
+This renderer written in C++ has capabilities to render basic 2d textures.
 
 # Installation
 
@@ -183,6 +183,29 @@ delete textObj;
 ```
 
 ## Other Rendering Options
+
+### Frame Buffers
+
+```cpp
+FrameBuffer* framebuffer = new FrameBuffer(window->GetWindowSize());
+
+while (!window->ShouldWindowClose())
+{
+    Rendere::BeginDraw();
+
+    framebuffer->Start();
+
+    // Render Objects
+
+    framebuffer->End();
+
+    // position : Vec3 (position of center of texture)
+    // dimensions : Vec2 (dimensions of texture in window)
+    // tint : Vec4 (colour of texture tint, can be left blank with default value of white so texture stays the same)
+    // rotation : float (rotation of texture, can be left blank with default value of 0)
+    Renderer::DrawTexture(position, dimensions, framebuffer->GetTextureID(), window->GetWindowSize(), tint, rotation);
+}
+```
 
 ### Clear colour
 

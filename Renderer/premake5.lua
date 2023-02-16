@@ -42,7 +42,7 @@ project "Renderer"
         }
         postbuildcommands
         {
-            ("cp -R -l Res \"%{wks.location}" .. application .. "/Res\"")
+            ("cp -R Res \"%{wks.location}/" .. application .. "/Res\"")
         }
 
     filter "system:windows"
