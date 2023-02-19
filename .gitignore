@@ -2,4 +2,5 @@ bin/
 bin-int/
 .vs/
 OpenGLRenderer.sln
+Renderer/
 **/*.vcxproj*
