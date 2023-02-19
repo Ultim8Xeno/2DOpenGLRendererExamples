@@ -5,7 +5,7 @@ This renderer written in C++ has capabilities to render basic 2d textures.
 # Installation
 
 ```bash
-git clone https://github.com/Ultim8Xeno/2DOpenGLRenderer
+git clone --recurse-submodules https://github.com/Ultim8Xeno/2DOpenGLRenderer
 ```
 
 # Building
