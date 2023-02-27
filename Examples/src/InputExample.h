@@ -25,5 +25,7 @@ int InputExample(void)
 		Renderer::EndDraw();
 	}
 
+	delete window;
+
 	return 0;
 }

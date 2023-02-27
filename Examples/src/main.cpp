@@ -4,6 +4,7 @@
 #include "TextExample.h"
 #include "TextureExample.h"
 #include "InputExample.h"
+#include "CameraExample.h"
 
 int main(void)
 {
@@ -13,6 +14,7 @@ int main(void)
 	TextExample();
 	FramebufferExample();
 	InputExample();
+	CameraExample();
 
 	return 0;
 }
